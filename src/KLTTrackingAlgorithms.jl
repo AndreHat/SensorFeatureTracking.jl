@@ -1,4 +1,4 @@
-include("ndgrid.jl")
+# include("ndgrid.jl")
 
 using Images
 using ImageView
@@ -214,7 +214,9 @@ function ImageTrackerSetup(orgI_setup, corners; windowSize = 20, TrackingType_se
     end
 
     # Make derivatives kernels
-    x_setup, y_setup = ndgrid(0:2*windowSize_setup,0:2*windowSize_setup)
+    # x_setup, y_setup = ndgrid(0:2*windowSize_setup,0:2*windowSize_setup)
+    x_setup = kron(0:2*windowSize_setup,ones(Int64, 1,2*windowSize_setup+1))
+    y_setup = x_setup'
 
     # x_setup=x_setup.-(windowSize_setup+1)
     # y_setup=y_setup.-(windowSize_setup+1)
@@ -222,7 +224,10 @@ function ImageTrackerSetup(orgI_setup, corners; windowSize = 20, TrackingType_se
     y_setup=y_setup.-(windowSize_setup)
 
     sigma = 2;
-    xder_setup,yder_setup =ndgrid(floor(-3*sigma):ceil(3*sigma),floor(-3*sigma):ceil(3*sigma));
+    # xder_setup,yder_setup =ndgrid(floor(-3*sigma):ceil(3*sigma),floor(-3*sigma):ceil(3*sigma));
+    xder_setup = kron(floor(-3*sigma):ceil(3*sigma),ones(Int64, 1,2*ceil(3*sigma)+1))
+    yder_setup = xder_setup'
+    # jac_x = kron((-half:half),ones(1, w))
     DGaussx_setup =-(xder_setup./(2*pi*sigma^4)).*exp(-(xder_setup.^2+yder_setup.^2)/(2*sigma^2));
     DGaussy_setup =-(yder_setup./(2*pi*sigma^4)).*exp(-(xder_setup.^2+yder_setup.^2)/(2*sigma^2));
 

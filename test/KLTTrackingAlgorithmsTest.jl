@@ -212,13 +212,9 @@ ImageView.imshow(drawimage)
 ImageView.imshow(drawimage2)
 third = ITVar.I_nextFrame[:,:]
 # test = orgI .- blank
-
+ImageView.imshow(blankstack)
+ImageView.imshow(blankstack2)
 
 # @test compare(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1])
 @test isapprox(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1], atol = 8)
 end
-
-#####################
-ImageView.imshow(blankstack)
-ImageView.imshow(blankstack2)
-#########################
