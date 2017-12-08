@@ -209,8 +209,8 @@ function ImageTrackerSetup(orgI_setup, corners; windowSize = 20, TrackingType_se
     # Pixel coordinate matrix
     p_reference_setup = Array{CartesianIndex{2}}(2,number_features_setup)
     for count = 1:number_features_setup
-        p_reference_setup[1, count] = corners[count].keypoint.+windowSize
-        p_reference_setup[2, count] = corners[count].keypoint.+windowSize
+        p_reference_setup[1, count] = corners[count]+windowSize
+        p_reference_setup[2, count] = corners[count]+windowSize
     end
 
     # Make derivatives kernels

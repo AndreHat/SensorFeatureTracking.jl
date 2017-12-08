@@ -162,7 +162,7 @@ end
 
 first = ITVar.I_nextFrame[:,:]
 for count = 1:imSequenceLength -1
-  @show count
+  # @show count
   ITVar.I_nextFrame[:,:] = blankstack[:,:,count+1]
   KTL_Tracker!(ITVar, ITConst)
   # @show ITVar.p_reference
@@ -188,7 +188,7 @@ drawimage2 = Gray.(deepcopy(orgI))
 second = ITVar.I_nextFrame[:,:]
 
 for count = 1:imSequenceLength -1
-    @show count
+    # @show count
     ITVar.I_nextFrame[:,:] = blankstack2[:,:,count+1]
     KTL_Tracker!(ITVar, ITConst)
   #  @show ITVar.p_reference
@@ -208,13 +208,13 @@ for count = 1:imSequenceLength -1
 end
 
 
-ImageView.imshow(drawimage)
-ImageView.imshow(drawimage2)
-third = ITVar.I_nextFrame[:,:]
-# test = orgI .- blank
-ImageView.imshow(blankstack)
-ImageView.imshow(blankstack2)
+# ImageView.imshow(drawimage)
+# ImageView.imshow(drawimage2)
+# third = ITVar.I_nextFrame[:,:]
+# # test = orgI .- blank
+# ImageView.imshow(blankstack)
+# ImageView.imshow(blankstack2)
 
 # @test compare(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1])
-@test isapprox(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1], atol = 8)
+@test isapprox(corners[1][1] + windowSize, ITVar.p_reference[2][1], atol = 8)
 end

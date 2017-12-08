@@ -6,5 +6,5 @@ using Base: Test
     # Common
     include("sensorgeometry.jl")
     include("blockflow.jl")
-
+    include("KLTTrackingAlgorithmsTest.jl")
 end
