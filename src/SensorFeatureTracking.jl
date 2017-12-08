@@ -52,12 +52,14 @@ export
   ImageTrackerSetup,
   fillNewImageTemplates!,
   testedges,
+  updateFeatures!,
   KTL_Tracker!,
   trackOneFeatureInversePyramid,
   trackOneFeatureInverse,
   trackOneFeaturePyramid,
   trackOneFeature,
-  warping!
+  warping!,
+  addBestShiTomasi!
 
 
 include("Common.jl")

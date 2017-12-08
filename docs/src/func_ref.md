@@ -26,6 +26,7 @@ Forward and Inverse KLT tracking with pyramids
 ```@docs
 ImageTrackerSetup
 fillNewImageTemplates!
+updateFeatures!
 KTL_Tracker!
 trackOneFeatureInversePyramid
 trackOneFeatureInverse
