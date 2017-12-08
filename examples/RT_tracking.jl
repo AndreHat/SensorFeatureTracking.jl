@@ -22,8 +22,8 @@ const windowSize_15 = 15
 const windowSize_10 = 10
 windowSize = 20
 
-frame_counter_from = 1            # in an image sequence you can select a range of images from frame_counter_from + 1 to frame_counter_to
-frame_counter_to = 200
+frame_counter_from = 50            # in an image sequence you can select a range of images from frame_counter_from + 1 to frame_counter_to
+frame_counter_to = 98
 nfeatures=20
 
 frame_counter = 4
@@ -32,24 +32,13 @@ update_reference_frame_count = 4
 
 number_frames = frame_counter_to - frame_counter_from +1
 
+
+
+#------------------------------------------------------------------------------------------------------
+
 img = load(joinpath(dirname(@__FILE__),"../Data/testSequence/image_$(frame_counter_from ).jpg"))
 img_end = load(joinpath(dirname(@__FILE__),"../Data/testSequence/image_$(frame_counter_to).jpg"))
 
-#------------------------------------------------------------------------------------------------------
-# img = load(joinpath(dirname(@__FILE__),"../Data/rotateData/image_$(frame_counter_from - 1).jpg"))
-# img_end = load(joinpath(dirname(@__FILE__),"../Data/rotateData/image_$(frame_counter_to).jpg"))
-#------------------------------------------------------------------------------------------------------
-# img = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094048_Burst$(frame_counter_from - 1).jpg"))
-# img_end = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094048_Burst$(frame_counter_to).jpg"))
-#------------------------------------------------------------------------------------------------------
-# img = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094344_Burst$(frame_counter_from - 1).jpg"))
-# img_end = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094344_Burst$(frame_counter_to).jpg"))
-#------------------------------------------------------------------------------------------------------
-# img = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094405_Burst$(frame_counter_from - 1).jpg"))
-# img_end = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094405_Burst$(frame_counter_to).jpg"))
-#------------------------------------------------------------------------------------------------------
-# img = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094421_Burst$(frame_counter_from - 1).jpg"))
-# img_end = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094421_Burst$(frame_counter_to).jpg"))
 #------------------------------------------------------------------------------------------------------
 
 
@@ -100,16 +89,7 @@ while frame_counter <= number_frames
     #------------------------------------------------------------------------------------------------------
     NextFrame[:,:] = load(joinpath(dirname(@__FILE__),"../Data/testSequence/image_$(frame_counter + frame_counter_from ).jpg"))
     #------------------------------------------------------------------------------------------------------
-    # NextFrame = load(joinpath(dirname(@__FILE__),"../Data/rotateData/image_$(frame_counter + frame_counter_from - 1).jpg"))
-    #------------------------------------------------------------------------------------------------------
-    # NextFrame = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094048_Burst$(frame_counter + frame_counter_from - 1).jpg"))
-    #------------------------------------------------------------------------------------------------------
-    # NextFrame = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094344_Burst$(frame_counter + frame_counter_from - 1).jpg"))
-    #------------------------------------------------------------------------------------------------------
-    # NextFrame = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094405_Burst$(frame_counter + frame_counter_from - 1).jpg"))
-    #------------------------------------------------------------------------------------------------------
-    # NextFrame = load(joinpath(dirname(@__FILE__),"../Data/myData/-20171123_094421_Burst$(frame_counter + frame_counter_from - 1).jpg"))
-    #------------------------------------------------------------------------------------------------------
+
     NextFrame[:,:] = Gray.(NextFrame)
 
     NextFrame[:,:] = convert(Array{Float64}, NextFrame)

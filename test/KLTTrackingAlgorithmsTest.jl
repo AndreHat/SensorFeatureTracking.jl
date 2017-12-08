@@ -2,10 +2,12 @@ using SensorFeatureTracking
 using TransformUtils
 using Base: Test
 using PaddedViews
-using Images, TestImages
-using Rotations, CoordinateTransformations
+using Images
+using Rotations
+using CoordinateTransformations
 using StaticArrays
-using ImageView, ImageDraw, ImageFeatures, Gtk.ShortNames, VideoIO, ImageFiltering
+using ImageDraw
+
 
 
 
@@ -124,7 +126,7 @@ end
 
 # ImageView.imshow(x)
 
-# @testset begin
+@testset begin
 
 
 
@@ -206,25 +208,6 @@ for count = 1:imSequenceLength -1
 end
 
 
-
-
-# for count = 1:imSequenceLength-1
-#   # @show count
-#   ITVar.I_nextFrame[:,:] = blankstack[:,:,imSequenceLength - count]
-#   KTL_Tracker!(ITVar, ITConst)
-#   @show ITVar.p_reference
-#   for columnCount = 1:length(ITVar.p_reference[1,:])
-#     if (ITVar.p_reference[2, columnCount][1]<1 || ITVar.p_reference[2, columnCount][2] <1)
-#     else
-#       draw!(drawimage2, LineSegment(ITVar.p_reference[1, columnCount],ITVar.p_reference[2, columnCount]))
-#     end
-#   end
-#   updateFeatures!(ITVar, ITConst)
-#
-#   # fillNewImageTemplates!(ITVar, ITConst)
-#   # fillNewImageTemplates!(ITVar, ITConst)
-# end
-# ImageView.imshow(ITVar.I_nextFrame)
 ImageView.imshow(drawimage)
 ImageView.imshow(drawimage2)
 third = ITVar.I_nextFrame[:,:]
@@ -233,7 +216,7 @@ third = ITVar.I_nextFrame[:,:]
 
 # @test compare(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1])
 @test isapprox(corners[1].keypoint[1] + windowSize, ITVar.p_reference[2][1], atol = 8)
-# end
+end
 
 #####################
 ImageView.imshow(blankstack)
